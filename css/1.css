@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(66, 66, 66);
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    background-color: rgb(134, 30, 30);
+    box-shadow: 30mm;
+}
+
+img { 
+    width:80%;
+    height: auto;
+}
+
+table,th,td{
+    width: auto;
+    height: auto;
+    border :2px solid rgb(0, 0, 0);
+    background-color: aliceblue;
+    border-collapse:collapse;
+    padding-right: 20%;
+}
+
+.didiv{
+    border: 5px outset black;
+    background-color: snow;
+    text-align: center;
+}
