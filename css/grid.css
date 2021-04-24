@@ -1,0 +1,49 @@
+.container {
+    margin-top: 10px;
+    display : grid;
+    grid-gap : 15px;
+    height : 92vh;
+    grid-template-columns : 300px 1fr 500px 300px 300px;
+    grid-template-rows: 100px 60vh 100px;
+    grid-template-areas:
+    'header header header header trading'
+    'explorer chart chart market trading'
+    'asset asset asset info info';
+}
+
+.container div {
+    background-color : rgba(255, 255, 255, 0.900);
+    padding : 30px;
+    border : 4px solid rgb(255, 255, 255, 0.800);
+    justify-items: center;
+    align-items: center;
+    border-radius: 18px;
+    box-shadow: 0px 0px 5px  #dadada;
+}
+.header {
+    grid-area : header;
+}
+
+.explorer {
+    grid-area : explorer;
+}
+
+.chart {
+    grid-area : chart;
+}
+
+.market {
+    grid-area : market;
+}
+
+.trading {
+    grid-area : trading;
+}
+
+.asset {
+    grid-area : asset;
+}
+
+.info {
+    grid-area : info;
+}
