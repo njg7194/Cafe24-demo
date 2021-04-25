@@ -1,0 +1,37 @@
+:root{
+    --topHighlight : rgb(220, 20, 63);
+    --topBG : rgb(255, 255, 255);
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background-color: var(--topBG);
+    padding : 0px 30px;
+    box-shadow: 0px 0px 10px  #dddddd;
+}
+
+.nav-logo{
+    font-size: 50px;
+    background-color : none;
+    color :var(--topHighlight);
+}
+
+.nav-explor{
+    display:flex;
+    list-style-type:none;
+    font-size: 20px;
+    color : var(--topHighlight);
+}
+
+.nav-explor li{
+    margin : 10px;
+    padding : 5px;
+    cursor :pointer;
+}
+
+body {
+    background-color: rgb(245, 245, 245);
+    margin : 0;
+}

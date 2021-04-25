@@ -1,0 +1,24 @@
+.btn-buy{
+    margin-right : 1px;
+    padding :8px 50px;
+    width : 80px;
+    background-color : rgb(55, 219, 118);
+    border : none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight:300;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.btn-sell {
+    margin-left: 1px;
+    padding :8px 50px;
+    background-color : rgb(250, 106, 106);
+    border : none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight:300;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}

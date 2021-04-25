@@ -4,68 +4,70 @@
 
 <head>
     <title> You Stock</title>
-    <link rel="stylesheet" href="./css/1.css">
+    <link rel="stylesheet" href="./css/body.css">
+    <link rel="stylesheet" href="./css/grid.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/explorer.css">
+    <link rel="stylesheet" href="./css/chart.css">
+    <link rel="stylesheet" href="./css/market.css">
+    <link rel="stylesheet" href="./css/trading.css">
+    <link rel="stylesheet" href="./css/asset.css">
+    <link rel="stylesheet" href="./css/info.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a9b27e6f5b.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
-    <nav class = "navbar">
-        <div class = "navbar_logo">
-            <i class="fas fa-chart-line"></i>
-        </div>
-
-        <div class = "explorer">
-            <li><a href="">거래</a></li>
-            <li><a href="">환전</a></li>
-            <li><a href="">상점</a></li>
-            <i class="fas fa-shopping-cart"></i>
-        </div>
-    </nav>
-
-
-    <div>
-        <div>
-            <div name="header">
-                <a class="header_logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="css-logo"></svg>
-                </a>
+    <div class="navbar-fix">
+        <nav class="navbar">
+            <div class="nav-logo">
+                <i class="fas fa-chart-line icon"></i>
             </div>
-            <div name="header">
-            </div>
-            <div name="header">
-            </div>
-            <div name="header">
 
+            <div class="nav-explor">
+                <li><i class="fas fa-exchange-alt"></i></li>
+                <li><i class="fas fa-history"></i></li>
+                <li><i class="fas fa-shopping-cart icon"></i></li>
+                <li><i class="fas fa-wallet"></i></li>
+                <li><i class="fas fa-headset"></i></li>
             </div>
-            <div name="header">
 
+            <div>
+                <i class="fas fa-cog icon"></i>
+                <i class="fas fa-wrench"></i>
             </div>
-            <div name="header">
-
-            </div>
-            <div name="header">
-
-            </div>
-        </div>
-    </div>
+        </nav>
     </div>
 
-
-    <h1 class="header1">안녕하세요요</h1>
-    <h2 id="demo">dkssudgk</h2>
-    <div class="didiv">
-
-        <p><i>hellow</i></p>
-
-
-
-        <img src="./image/nonname1.png">
-        <script src="./js/1.js"></script>
-
+    <div class="container">
+        <div class="header grid">header</div>
+        <div class="explorer grid">
+            <div class="exp-filter">34423422342342343</div>
+            <div class="vertical-menu">
+                <a href="#" class="active">1</a>
+                <a href="#">Link1</a>
+                <a href="#">Link1</a>
+                <a href="#">Link1</a>
+                <a href="#">Link1</a>
+                <a href="#">Link1</a>
+            </div>
+            <div>1</div>
+        </div>
+        <div class="chart grid">chart</div>
+        <div class="market grid">market</div>
+        <div class="trading grid">trading
+            <div class="order-panal">
+                <input></input>
+                <button class="btn-buy">BUY</button>
+                <button class="btn-sell">SELL</button>
+            </div>
+            
+        </div>
+        <div class="asset grid">asset</div>
+        <div class="info grid">info</div>
     </div>
+
 
 </body>
 
