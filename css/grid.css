@@ -11,14 +11,11 @@
     'asset asset info info info';
 }
 
-.container div {
+.container > div {
     background-color : rgb(254, 254, 254);
-    padding : 10px;
+    padding : 0;
     border : 1px solid rgb(255, 255, 255);
-    justify-items: center;
-    align-items: center;
-    text-align: center;
-
+    justify-items : center;
     border-radius: 10px;
     box-shadow: 0px 0px 3px  #e4e4e4;
 }
@@ -28,7 +25,9 @@
 
 .explorer {
     grid-area : explorer;
-    display : flex;
+    display : block;
+    align-content: center;
+    
 }
 
 .chart {
@@ -37,23 +36,31 @@
 
 .market {
     grid-area : market;
+    color : rgba(0, 0, 0, 0.500);
+    font-weight: bold;
+    font-size:large;
 }
 
 .trading {
     grid-area : trading;
+    display : block;
+    color : rgba(0, 0, 0, 0.500);
+    font-weight: bold;
+    font-size:large;
 }
 
-.order-panal {
-    box-shadow: none;
-    border : none;
-    background-color : red;
-}
 
 
 .asset {
     grid-area : asset;
+    color : rgba(0, 0, 0, 0.500);
+    font-weight: bold;
+    font-size:large;
 }
 
 .info {
     grid-area : info;
+    color : rgba(0, 0, 0, 0.500);
+    font-weight: bold;
+    font-size:large;
 }

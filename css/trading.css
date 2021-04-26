@@ -1,8 +1,39 @@
+.trad-name {
+    padding : 8px 10px;
+}
+
+.forempty {
+    padding : 8px 10px;
+    background : transparent;
+    height : 20%;
+    border : 1px solid rgb(211, 211, 211);
+}
+.order-panal {
+    display : block;
+    margin-top: 10%;
+    border : none;
+    align-content: space-between;
+    text-align: center;
+    height: 25%;
+}
+
+.order-panal > input {
+    color : red;
+}
+.order-input {
+    margin : 10px 0px 20px 0px;
+    border: none;
+    border-radius: 10px;
+    padding : 2px 2px 2px 10px;
+    width: 90%;
+    height : 30px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 .btn-buy{
-    margin-right : 1px;
-    padding :8px 50px;
-    width : 80px;
-    background-color : rgb(55, 219, 118);
+    padding :10px 30px;
+    width : 46%;
+    background-color : rgb(25, 233, 105);
     border : none;
     border-radius: 10px;
     font-size: 15px;
@@ -12,8 +43,8 @@
 }
 
 .btn-sell {
-    margin-left: 1px;
-    padding :8px 50px;
+    padding :10px 30px;
+    width :46%;
     background-color : rgb(250, 106, 106);
     border : none;
     border-radius: 10px;
@@ -21,4 +52,31 @@
     font-weight:300;
     color: rgb(255, 255, 255);
     cursor: pointer;
+}
+
+.btn-buy:hover {
+    background-color : rgb(0, 255, 98);
+    color : rgb(255, 255, 255);
+}
+
+.btn-buy:active {
+    background-color:rgb(23, 212, 96);
+}
+
+.btn-sell:hover {
+    background-color : rgb(255, 131, 131);
+}
+
+.btn-sell:active {
+    background-color:rgb(255, 85, 85);
+}
+
+.mini-wallet {
+    margin: 0;
+    margin-top: 10%;
+    border: 1px solid rgba(255, 217, 0, 0.3);
+    padding : 10px;
+    height : 32%;
+    background-color : rgba(255, 217, 0, 0.3);
+    border-radius: 0px 0px 10px 10px;
 }
