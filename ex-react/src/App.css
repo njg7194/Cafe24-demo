@@ -2,6 +2,34 @@
   text-align: center;
 }
 
+.main-nav {
+  background: rgb(218, 218, 218);
+  width: 100%;
+  display: flex;
+  color: rgb(51, 51, 51);
+  padding: 20px;
+  font-weight: 600;
+  font-size: 30px;
+  font-family: 'adam';
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "adam";
+  src: url(./font/adam/Adam-Bold.ttf);
+}
+
+.list {
+  border: 1px solid;
+  border-radius: 5px;
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -9,12 +37,12 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite .2s linear;
   }
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #275bc4;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

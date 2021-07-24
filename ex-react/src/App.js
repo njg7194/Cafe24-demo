@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+
+  let [man,manSet] = useState('남자2 코트 추천');
+  let posts = '뽀송이는 귀여웡';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="navbar-fix">
+      <div className="main-nav">
+        <div>uStock</div>
+      </div>
+      <navigator className="navbar">
+      뿌잉뿌뿌잉
+      </navigator>
+
+      <div className="list">
+        <h3> {man} </h3>
+        <p>7월 24일 발행함</p>
+        <hr />
+      </div>
     </div>
   );
 }
