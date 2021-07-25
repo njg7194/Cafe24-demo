@@ -19,6 +19,26 @@
   src: url(./font/adam/Adam-Bold.ttf);
 }
 
+.tabon {
+  color: red;
+  cursor: pointer;
+}
+
+.changeVal {
+  background-color:cornflowerblue;
+  color:azure;
+  font-size:medium;
+  font-style: bold;
+  padding: 10px 20px;
+  border-radius: 3px;
+  border-style:hidden;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  display: block;
+  cursor: pointer;
+  
+}
+
 .list {
   border: 1px solid;
   border-radius: 5px;
@@ -28,6 +48,12 @@
   text-align: left;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.modal {
+  display:block;
+  background-color: aqua;
+  align-content: center;
 }
 
 .App-logo {
