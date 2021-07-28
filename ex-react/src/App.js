@@ -9,20 +9,26 @@ function App() {
   let [man,manSet] = useState(['남자 코트 추천', '우동', '독학']);
   let [tb, tbSet] = useState(0);
 
+  var bae = [0,1,2,3,4]
   return (
     <div>
       <div className="main-nav" onClick={() => { modalSet(!modal) }}> uStock </div>
 
+
+
       {
-        man.map((글)=>{
+        man.map((x) => {
+          return (
             <div className="list">
-              <h3> {글} <span className="tabon" onClick={() => { tbSet(tb + 1) }}>❤</span>{tb}</h3>
+              <h3> {x} <span className="tabon" onClick={() => { tbSet(tb + 1) }}>❤</span>{tb}</h3>
               <p>7월 24일 발행함</p>
               <hr />
               <button className="changeVal" onClick={stateChange}>값 바꾸기</button>
             </div>
+          )
         })
       }
+
       {
         modal === true
           ? <Modal></Modal>
@@ -49,11 +55,13 @@ function App() {
 }
 
 function Modal() {
-  console.log("모달");
-  return(
+  return (
     <div className="modal">
-      <h2>제목</h2>
-      <p>날짜</p>
+      <div>
+        <h2>제목1</h2>
+        <p>날짜</p>
+      </div>
+      <div className="modal-layer"></div>
     </div>
   )
 }
