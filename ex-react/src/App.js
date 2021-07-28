@@ -1,4 +1,4 @@
-/*eslint-disable*/
+/* eslint-disable */
 
 import React, { useState } from 'react';
 import './App.css';
@@ -9,7 +9,7 @@ function App() {
   let [man,manSet] = useState(['남자 코트 추천', '우동', '독학']);
   let [tb, tbSet] = useState(0);
 
-  var bae = [0,1,2,3,4]
+
   return (
     <div>
       <div className="main-nav" onClick={() => { modalSet(!modal) }}> uStock </div>
@@ -19,7 +19,7 @@ function App() {
       {
         man.map((x) => {
           return (
-            <div className="list">
+            <div key={x.toString()} className="list">
               <h3> {x} <span className="tabon" onClick={() => { tbSet(tb + 1) }}>❤</span>{tb}</h3>
               <p>7월 24일 발행함</p>
               <hr />
@@ -31,7 +31,7 @@ function App() {
 
       {
         modal === true
-          ? <Modal></Modal>
+          ? <Modal primename = {man}></Modal>
           : null
       }
     </div>
@@ -46,19 +46,17 @@ function App() {
       var ex = [...man];
       ex = ['여자 코트 추천', '라면', '학원']
       manSet(ex);
-      console.log(man);
-      
     }
     
   }
 
 }
 
-function Modal() {
+function Modal(props) {
   return (
     <div className="modal">
       <div>
-        <h2>제목1</h2>
+        <h2>{ props.primename[1] }</h2>
         <p>날짜</p>
       </div>
       <div className="modal-layer"></div>
