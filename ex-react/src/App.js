@@ -6,8 +6,9 @@ import './App.css';
 function App() {
 
   let[modal, modalSet] = useState(false);
-  let [man,manSet] = useState(['남자 코트 추천', '우동', '독학']);
+  let [man,manSet] = useState(['남자 코트 추천', '우동', '독학','가야죠']);
   let [tb, tbSet] = useState(0);
+  let [btnStat,btnStatSet] = useState(0);
 
 
   return (
@@ -29,9 +30,15 @@ function App() {
         })
       }
 
+      <div className="buttonSet">
+        <button className="bt1" onClick={() => { btnStatSet(0); modalSet(!modal)  }}>버튼1</button>
+        <button className="bt2" onClick={() => { btnStatSet(1); modalSet(!modal)}}>버튼2</button>
+        <button className="bt3" onClick={() => { btnStatSet(2); modalSet(!modal)}}>버튼3</button>
+        <button className="bt4" onClick={() => { btnStatSet(3); modalSet(!modal)}}>버튼4</button>
+      </div>
       {
         modal === true
-          ? <Modal primename = {man}></Modal>
+          ? <Modal primename = {man} btnstat = {btnStat}></Modal>
           : null
       }
     </div>
@@ -56,7 +63,7 @@ function Modal(props) {
   return (
     <div className="modal">
       <div>
-        <h2>{ props.primename[1] }</h2>
+        <h2>{ props.primename[props.btnstat] }</h2>
         <p>날짜</p>
       </div>
       <div className="modal-layer"></div>

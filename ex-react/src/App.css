@@ -49,6 +49,29 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+.buttonSet{
+  text-align: center;
+  
+}
+
+.buttonSet button{
+  padding: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: lightblue;
+  border-color: rgb(124, 218, 250);
+  border-style:none;
+}
+
+.buttonSet .bt1{
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+}
+
+.buttonSet .bt4{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 
 .modal {
   position: relative;
