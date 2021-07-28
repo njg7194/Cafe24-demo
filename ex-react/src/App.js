@@ -31,14 +31,14 @@ function App() {
       }
 
       <div className="buttonSet">
-        <button className="bt1" onClick={() => { btnStatSet(0); modalSet(!modal)  }}>버튼1</button>
-        <button className="bt2" onClick={() => { btnStatSet(1); modalSet(!modal)}}>버튼2</button>
-        <button className="bt3" onClick={() => { btnStatSet(2); modalSet(!modal)}}>버튼3</button>
-        <button className="bt4" onClick={() => { btnStatSet(3); modalSet(!modal)}}>버튼4</button>
+        <button className="bt1" onClick={ () => { btnStatSet(0); modalSet(true)} }>버튼1</button>
+        <button className="bt2" onClick={ () => { btnStatSet(1); modalSet(true)} }>버튼2</button>
+        <button className="bt3" onClick={ () => { btnStatSet(2); modalSet(true)} }>버튼3</button>
+        <button className="bt4" onClick={ () => { btnStatSet(3); modalSet(true)} }>버튼4</button>
       </div>
       {
         modal === true
-          ? <Modal primename = {man} btnstat = {btnStat}></Modal>
+          ? <Modal primename = {man} btnstat = {btnStat} onHide = {()=>{modalSet(!modal)}}></Modal>
           : null
       }
     </div>
@@ -65,6 +65,7 @@ function Modal(props) {
       <div>
         <h2>{ props.primename[props.btnstat] }</h2>
         <p>날짜</p>
+        <button onClick={() => { props.onHide() }}>X</button>
       </div>
       <div className="modal-layer"></div>
     </div>

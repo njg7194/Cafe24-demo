@@ -76,17 +76,19 @@ border-bottom-left-radius: 5px;
 .modal {
   position: relative;
   display:block;
+  margin:10px;
   margin-left: 10%;
   margin-right: 10%;
   border-radius: 10px;
   border-width: 2px;
-  padding-top: 0px;
+  padding-top: 1px;
+  padding: 20px;
   background-color: rgb(223, 223, 223);
   align-content: center;
   
 }
 .modal h2{
-  padding-top: 5px;
+  margin:10px;
 }
 .modal .modal-layer{
   position:fixed;
