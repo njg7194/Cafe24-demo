@@ -3,7 +3,7 @@
 }
 
 .main-nav {
-  background: rgb(255, 200, 200);
+  background: rgb(126, 126, 126);
   width: 100%;
   display: flex;
   color: rgb(51, 51, 51);
@@ -30,7 +30,7 @@
   font-size:medium;
   font-style: bold;
   padding: 10px 20px;
-  border-radius: 3px;
+  border-radius: 20px;
   border-style:hidden;
   margin-bottom: 5px;
   margin-top: 5px;
@@ -71,6 +71,28 @@ border-bottom-left-radius: 5px;
 .buttonSet .bt4{
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.publish{
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.publish input{
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 80%;
+  border: 1px solid gray;
+}
+
+.publish button{
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  padding: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .modal {

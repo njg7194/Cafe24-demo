@@ -31,6 +31,7 @@ function App() {
         })
       }
 
+
       <div className="buttonSet">
         <button className="bt1" onClick={ () => { btnStatSet(0); modalSet(true)} }>버튼1</button>
         <button className="bt2" onClick={ () => { btnStatSet(1); modalSet(true)} }>버튼2</button>
@@ -38,8 +39,15 @@ function App() {
         <button className="bt4" onClick={ () => { btnStatSet(3); modalSet(true)} }>버튼4</button>
       </div>
 
+
       {input}
       <input onChange = { (e)=>{ inputSet( e.target.value ) } }/>
+
+      <div className = "publish">
+        <input onChange = { (e)=>{inputSet(e.target.value)} }></input>
+        <button onClick = { manInsert }>저장</button>
+      </div>
+
 
       {
         modal === true
@@ -49,6 +57,13 @@ function App() {
     </div>
   );
 
+  function manInsert() {
+
+    let tmp = [...man];
+    tmp.unshift(input);
+    manSet(tmp);
+  }
+  
 
   function stateChange() {
     if(man[0].includes('여자'))
