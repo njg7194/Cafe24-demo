@@ -9,6 +9,7 @@ function App() {
   let [man,manSet] = useState(['남자 코트 추천', '우동', '독학','가야죠']);
   let [tb, tbSet] = useState(0);
   let [btnStat,btnStatSet] = useState(0);
+  let [input, inputSet] = useState('');
 
 
   return (
@@ -18,9 +19,9 @@ function App() {
 
 
       {
-        man.map((x) => {
+        man.map((x, i) => {
           return (
-            <div key={x.toString()} className="list">
+            <div key={i} className="list">
               <h3> {x} <span className="tabon" onClick={() => { tbSet(tb + 1) }}>❤</span>{tb}</h3>
               <p>7월 24일 발행함</p>
               <hr />
@@ -36,6 +37,10 @@ function App() {
         <button className="bt3" onClick={ () => { btnStatSet(2); modalSet(true)} }>버튼3</button>
         <button className="bt4" onClick={ () => { btnStatSet(3); modalSet(true)} }>버튼4</button>
       </div>
+
+      {input}
+      <input onChange = { (e)=>{ inputSet( e.target.value ) } }/>
+
       {
         modal === true
           ? <Modal primename = {man} btnstat = {btnStat} onHide = {()=>{modalSet(!modal)}}></Modal>
@@ -47,11 +52,11 @@ function App() {
 
   function stateChange() {
     if(man[0].includes('여자'))
-      manSet(['남자 코트 추천', '우동', '독학']);
+      manSet(['남자 코트 추천', '우동', '독학', '뿌잉']);
     else
     {
       var ex = [...man];
-      ex = ['여자 코트 추천', '라면', '학원']
+      ex = ['여자 코트 추천', '라면', '학원', '쀙']
       manSet(ex);
     }
     
