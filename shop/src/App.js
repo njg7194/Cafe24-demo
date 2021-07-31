@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 
 import './App.css';
 import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, Container} from 'react-bootstrap';
@@ -35,7 +35,6 @@ function App() {
 
       <div className="jumbotron">
         <h2>Hello World!</h2>
-        <a>sfjlsa;g;asdjfs;ljf</a>
       </div>
 
 
@@ -57,11 +56,13 @@ function Shoelist(props) {
         <div className="row">
           {
             tmp.map((x, i) => {
+              let shoe = i+1;
               return (
                 <div key={i} className="col-md-4">
-                  <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+                  <img src={'https://codingapple1.github.io/shop/shoes' + shoe + '.jpg'} width="100%" />
                   <h4>{x.title}</h4>
                   <p>{x.content}</p>
+                  console.log()
                 </div>
               )
             })
