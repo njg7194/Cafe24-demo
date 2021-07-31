@@ -1,18 +1,22 @@
-
+/* eslint-disable */
 
 import './App.css';
 import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, Container} from 'react-bootstrap';
 import importdata from './data.js'
 import { useState, props } from 'react';
+import {link, Route, Switch} from 'react-router-dom';
 
 
 function App() {
 
-  let[data,dataSet] = useState(importdata);
+  let [data, dataSet] = useState(importdata);
 
 
   return (
     <div className="App">
+
+
+
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home" >uStock Analysyst</Navbar.Brand>
@@ -33,13 +37,36 @@ function App() {
         </Container>
       </Navbar>
 
-      <div className="jumbotron">
-        <h2>Hello World!</h2>
-      </div>
+
+      <Route exact path="/">
+        <div>
+          <div className="jumbotron">
+            <h2>Hello World!</h2>
+          </div>
+
+          <Shoelist data={data} ></Shoelist>
+
+        </div>
+      </Route>
 
 
-      <Shoelist data = {data} ></Shoelist>
-
+      <Route path="/spec" component={Shoelist}>
+        <div>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6">
+                <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+              </div>
+              <div className="col-md-6 mt-4">
+                <h4 className="pt-5">상품명</h4>
+                <p>상품설명</p>
+                <p>120000원</p>
+                <button className="btn btn-danger">주문하기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Route>
 
     </div>
   );

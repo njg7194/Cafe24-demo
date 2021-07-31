@@ -15,7 +15,7 @@
 }
 
 .jumbotron h2 {
-  color:white;
+  color:rgb(109, 109, 109);
   padding:10px;
   margin:0;
 }
@@ -30,7 +30,7 @@
 }
 
 .row {
-  border:solid chartreuse;
+  border:solid rgb(93, 187, 0);
 }
 
 .col-md-4 {
