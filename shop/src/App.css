@@ -26,6 +26,7 @@
 
 .container {
   border:solid blue;
+  border-block-style: ;
 }
 
 .row {
