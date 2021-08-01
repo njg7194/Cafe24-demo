@@ -2,14 +2,14 @@
 
 import './App.css';
 import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, Container} from 'react-bootstrap';
-import importdata from './data.js'
+import arrayData from './data.js'
 import { useState, props } from 'react';
 import {link, Route, Switch} from 'react-router-dom';
 
 
 function App() {
 
-  let [data, dataSet] = useState(importdata);
+  let [data, dataSet] = useState(arrayData);
 
 
   return (
@@ -50,7 +50,7 @@ function App() {
       </Route>
 
 
-      <Route path="/spec" component={Shoelist}>
+      <Route path="/spec">
         <div>
           <div className="container">
             <div className="row">
