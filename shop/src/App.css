@@ -21,11 +21,11 @@
 
 .row {
   margin-top: 30px;
+  border:solid rgb(255, 0, 191);
 }
 
 .container {
   border:solid rgb(0, 189, 148);
-  border-block-style: ;
 }
 
 .row {

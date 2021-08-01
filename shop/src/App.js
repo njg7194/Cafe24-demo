@@ -50,8 +50,8 @@ function App() {
           </div>
         </Route>
 
-        <Route path="/spec">
-          <Spec />
+        <Route path="/spec/:id">
+          <Spec shoes={data}/>
         </Route>
 
         <Route path="/:id">
