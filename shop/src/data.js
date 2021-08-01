@@ -22,4 +22,4 @@ let arrayData = [
     }
 ] 
 
-export default arrayData
+export default arrayData;

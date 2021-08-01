@@ -3,7 +3,6 @@
   background-color:rgb(255, 255, 255);
 }
 
-
 .jumbotron {
   padding: 30px;
   text-align: baseline;
@@ -25,7 +24,7 @@
 }
 
 .container {
-  border:solid blue;
+  border:solid rgb(0, 189, 148);
   border-block-style: ;
 }
 

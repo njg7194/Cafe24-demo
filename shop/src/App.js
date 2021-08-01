@@ -2,9 +2,10 @@
 
 import './App.css';
 import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, Container} from 'react-bootstrap';
-import arrayData from './data.js'
+import arrayData from './data.js';
 import { useState, props } from 'react';
 import {link, Route, Switch} from 'react-router-dom';
+import Spec from './Spec.js';
 
 
 function App() {
@@ -19,12 +20,12 @@ function App() {
 
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home" >uStock Analysyst</Navbar.Brand>
+          <Navbar.Brand href="#home" >uStock Analysist</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#/">Home</Nav.Link>
-              <Nav.Link href="#spec">Spec</Nav.Link>
+              <Nav.Link href="#/spec">Spec</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -38,35 +39,28 @@ function App() {
       </Navbar>
 
 
-      <Route exact path="/">
-        <div>
-          <div className="jumbotron">
-            <h2>Hello World!</h2>
-          </div>
-
-          <Shoelist data={data} ></Shoelist>
-
-        </div>
-      </Route>
-
-
-      <Route path="/spec">
-        <div>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-6">
-                <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
-              </div>
-              <div className="col-md-6 mt-4">
-                <h4 className="pt-5">상품명</h4>
-                <p>상품설명</p>
-                <p>120000원</p>
-                <button className="btn btn-danger">주문하기</button>
-              </div>
+      <Switch>
+        <Route exact path="/">
+          <div>
+            <div className="jumbotron">
+              <h2>Hello World!</h2>
+              <input></input>
             </div>
+            <Shoelist data={data} ></Shoelist>
           </div>
-        </div>
-      </Route>
+        </Route>
+
+        <Route path="/spec">
+          <Spec />
+        </Route>
+
+        <Route path="/:id">
+          <div>새로 만든 루트입니다.</div>
+        </Route>
+
+      </Switch>
+
+
 
     </div>
   );
@@ -89,7 +83,6 @@ function Shoelist(props) {
                   <img src={'https://codingapple1.github.io/shop/shoes' + shoe + '.jpg'} width="100%" />
                   <h4>{x.title}</h4>
                   <p>{x.content}</p>
-                  console.log()
                 </div>
               )
             })
@@ -100,6 +93,5 @@ function Shoelist(props) {
     </>
   )
 }
-
 
 export default App;
