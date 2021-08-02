@@ -4,6 +4,8 @@ import { useHistory, useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
 
+import './Spec.scss';
+
 let 뿡 = styled.div`
     padding : 20px;
     font-size : 25px;
@@ -33,6 +35,9 @@ function Spec(props) {
             <div className="container">
                 <뿡>Hello</뿡>
                 <뿡뿡 color = {'red'} >스타일드 프롭 가져오기 테스트</뿡뿡>
+                <div className="hello">
+                    <h4>PLEASE</h4>
+                </div>
                 <Button variant="outline-primary" onClick={() => { history.goBack() }}>뒤로가기</Button>
                 <div className="row">
                     <div className="col-md-6">
