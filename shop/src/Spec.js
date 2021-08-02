@@ -9,6 +9,13 @@ let 뿡 = styled.div`
     font-size : 25px;
 `;
 
+let 뿡뿡 = styled.h4`
+    padding : 20px;
+    font-size : 25px;
+    color : ${props => props.color}
+`;
+
+
 function Spec(props) {
 
     let { id } = useParams();
@@ -25,6 +32,7 @@ function Spec(props) {
         <div>
             <div className="container">
                 <뿡>Hello</뿡>
+                <뿡뿡 color = {'red'} >스타일드 프롭 가져오기 테스트</뿡뿡>
                 <Button variant="outline-primary" onClick={() => { history.goBack() }}>뒤로가기</Button>
                 <div className="row">
                     <div className="col-md-6">
