@@ -33,11 +33,26 @@ function Spec(props) {
     return (
         <div>
             <div className="container">
+
+
+
                 <뿡>Hello</뿡>
                 <뿡뿡 color = {'red'} >스타일드 프롭 가져오기 테스트</뿡뿡>
+
                 <div className="hello">
                     <h4>PLEASE</h4>
                 </div>
+
+                <div className="my-alert">
+                    <p>재고없다 빨리 사라</p>
+                </div>
+
+                <div className="my-alert2">
+                    <p>없다고 사라고</p>
+                </div>
+
+
+
                 <Button variant="outline-primary" onClick={() => { history.goBack() }}>뒤로가기</Button>
                 <div className="row">
                     <div className="col-md-6">
