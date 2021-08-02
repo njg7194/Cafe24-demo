@@ -2,6 +2,12 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import styled from 'styled-components';
+
+let 뿡 = styled.div`
+    padding : 20px;
+    font-size : 25px;
+`;
 
 function Spec(props) {
 
@@ -18,6 +24,7 @@ function Spec(props) {
     return (
         <div>
             <div className="container">
+                <뿡>Hello</뿡>
                 <Button variant="outline-primary" onClick={() => { history.goBack() }}>뒤로가기</Button>
                 <div className="row">
                     <div className="col-md-6">
