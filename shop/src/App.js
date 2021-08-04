@@ -3,15 +3,15 @@
 import './App.css';
 import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, Container} from 'react-bootstrap';
 import arrayData from './data.js';
-import { useState, props } from 'react';
+import React, { useState, props, useEffect  } from 'react';
 import {link, Route, Switch} from 'react-router-dom';
 import Spec from './Spec.js';
 
 
 function App() {
 
-  let [data, dataSet] = useState(arrayData);
 
+  let [data, dataSet] = useState(arrayData);
 
   return (
     <div className="App">
@@ -25,7 +25,7 @@ function App() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#/">Home</Nav.Link>
-              <Nav.Link href="#/spec">Spec</Nav.Link>
+              <Nav.Link href="#/spec/1">Spec</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

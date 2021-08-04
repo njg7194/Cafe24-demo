@@ -1,7 +1,7 @@
 @import './subSpec.scss';
 
 @mixin 함수() {
-    background : #eeeeee;
+    background : #8f8f8f;
     padding : 15px;
     border-radius : 5px;
     max-width : 500px;
@@ -11,7 +11,7 @@
 
 .hello {
     h4 {
-        color : blue;
+        color : rgb(238, 0, 131);
     }
     p {
         color:greenyellow;
