@@ -11,8 +11,13 @@ import axios from 'axios';
 
 function App() {
 
-
   let [data, dataSet] = useState(arrayData);
+
+  useEffect(() => {
+    console.log(data);
+  },[data])
+
+
 
   return (
     <div className="App">
@@ -47,7 +52,14 @@ function App() {
               <h2>Hello World!</h2>
               <input></input>
             </div>
-            <Shoelist data={data} ></Shoelist>
+            <Shoelist data={ data } ></Shoelist>
+            {/* <Add_dataBTN data={ data } set={ (x)=> dataSet(x) }></Add_dataBTN> */}
+            <button className="btn btn-primary" onClick={() => {
+
+              axios.get('https://codingapple1.github.io/shop/data2.json')
+                .then((result) => { dataSet([...data, ...result.data]) })
+                .catch(() => { })
+            }}>더보기</button>
           </div>
         </Route>
 
@@ -79,8 +91,9 @@ function Shoelist(props) {
           {
             tmp.map((x, i) => {
               let shoe = i+1;
+              /*내 자신과의 싸움에서 지지는 않고 녹다운정도 된듯*/
               return (
-                <div key={i} className="col-md-4">
+                <div key={i} className="col-md-4">  
                   <img src={'https://codingapple1.github.io/shop/shoes' + shoe + '.jpg'} width="100%" />
                   <h4>{x.title}</h4>
                   <p>{x.content}</p>
@@ -89,20 +102,39 @@ function Shoelist(props) {
             })
           }
         </div>
-        <button className="btn btn-primary" onClick={()=>{
-          
-          axios.get('https://codingapple1.github.io/shop/data2.json')
-          .then((result)=>{
-            console.log(result.data);
-          })
-          .catch(()=>{
-            console.log('silpae00');
-          })
-        }}>더보기</button>
+        
       </div>
 
     </>
   )
 }
+
+
+// Ajax로 받은 값 프롭스로 받은 스테이트 변경 함수에 넣어서 적용시키기.
+// 되긴 되는데 버튼 누르고 vscode에서 줄바꾸기 한번 하고 저장하니까 됨. 이해안감;
+// 그리고 버튼 하나에 저렇게 주렁주렁 달리는거 개극혐인데 저거도 컴포넌트화 못시키나
+// function Add_dataBTN(props) {
+
+//   let tmp = [...props.data];
+
+//   return(
+//     <div>
+//       <button className="btn btn-primary" onClick={()=>{
+//           axios.get('https://codingapple1.github.io/shop/data2.json')
+//           .then((result)=>{
+//             tmp.push(...result.data);
+//           })
+//           .catch(()=>{
+//             alert("데이터 수령 실패!");
+//           })
+
+//           props.set(tmp);
+//           console.log(tmp);
+//         }}>더보기</button>
+
+//     </div>
+//   )
+
+// }
 
 export default App;
