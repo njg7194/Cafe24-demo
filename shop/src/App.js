@@ -12,9 +12,10 @@ import axios from 'axios';
 function App() {
 
   let [data, dataSet] = useState(arrayData);
+  let [stock, stockSet] = useState([9, 10, 15]);
 
   useEffect(() => {
-    console.log(data);
+    //onsole.log(data);
   },[data])
 
 
@@ -53,7 +54,7 @@ function App() {
               <input></input>
             </div>
             <Shoelist data={ data } ></Shoelist>
-            {/* <Add_dataBTN data={ data } set={ (x)=> dataSet(x) }></Add_dataBTN> */}
+            {/* <Add_dataBTN data={ data } set={ ())=> dataSet() }></Add_dataBTN> */}
             <button className="btn btn-primary" onClick={() => {
 
               axios.get('https://codingapple1.github.io/shop/data2.json')
@@ -64,7 +65,7 @@ function App() {
         </Route>
 
         <Route path="/spec/:id">
-          <Spec shoes={data}/>
+          <Spec shoes={data} stock = { stock } stockSet = { stockSet } />
         </Route>
 
         <Route path="/:id">
