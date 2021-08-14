@@ -1,30 +1,32 @@
 /* eslint-disable */
 
-import './App.css';
-import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, Container} from 'react-bootstrap';
-import arrayData from './data.js';
-import React, { useState, props, useEffect  } from 'react';
-import {link, Route, Switch} from 'react-router-dom';
-import Spec from './Spec.js';
+import React, { useState, props, useEffect } from 'react';
+import { link, Route, Switch } from 'react-router-dom';
+import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, Container } from 'react-bootstrap';
 import axios from 'axios';
 
+import arrayData from './data.js';
+import Spec from './Spec.js';
+
+import './App.css';
+
+//Context API : 같은 변수값을 공유할 범위 생성   
+export let stockContext = React.createContext({});   
 
 function App() {
-
   let [data, dataSet] = useState(arrayData);
   let [stock, stockSet] = useState([9, 10, 15]);
 
   useEffect(() => {
     //onsole.log(data);
-  },[data])
+  }, [data])
 
 
 
   return (
     <div className="App">
 
-
-
+      {/* React Bootstrap : react-bootstrap 기본 Navbar 수정하여 적용함. */}
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home" >uStock Analysist</Navbar.Brand>
@@ -46,14 +48,19 @@ function App() {
       </Navbar>
 
 
+      {/* React Route : 리엑트 라우트시 단일 컴포넌트 표시를 위한 react-router-dom Switch */}
       <Switch>
+
+        {/* React Route : 홈화면 라우팅 */}
         <Route exact path="/">
           <div>
             <div className="jumbotron">
               <h2>Hello World!</h2>
               <input></input>
             </div>
-            <Shoelist data={ data } ></Shoelist>
+
+
+            <Shoelist data={data} ></Shoelist>
             {/* <Add_dataBTN data={ data } set={ ())=> dataSet() }></Add_dataBTN> */}
             <button className="btn btn-primary" onClick={() => {
 
@@ -64,24 +71,30 @@ function App() {
           </div>
         </Route>
 
+        {/* React Route : 스펙 화면 라우팅 */}
         <Route path="/spec/:id">
-          <Spec shoes={data} stock = { stock } stockSet = { stockSet } />
+
+          <stockContext.Provider value={stock, stockSet}>
+            <Spec shoes={data} />
+          </stockContext.Provider>
+
         </Route>
 
+        {/* React Route : 예외 처리 라우팅 */}
         <Route path="/:id">
           <div>새로 만든 루트입니다.</div>
         </Route>
 
       </Switch>
 
-
-
     </div>
   );
 }
 
+// React Component : 신발 리스트 출력 컴포넌트.
 function Shoelist(props) {
 
+  // React Props : 프롭스 받아와서 리컴포넌트
   let tmp = [...props.data];
 
   return (
@@ -91,10 +104,10 @@ function Shoelist(props) {
         <div className="row">
           {
             tmp.map((x, i) => {
-              let shoe = i+1;
+              let shoe = i + 1;
               /*내 자신과의 싸움에서 지지는 않고 녹다운정도 된듯*/
               return (
-                <div key={i} className="col-md-4">  
+                <div key={i} className="col-md-4">
                   <img src={'https://codingapple1.github.io/shop/shoes' + shoe + '.jpg'} width="100%" />
                   <h4>{x.title}</h4>
                   <p>{x.content}</p>
@@ -103,7 +116,7 @@ function Shoelist(props) {
             })
           }
         </div>
-        
+
       </div>
 
     </>

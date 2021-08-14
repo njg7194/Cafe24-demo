@@ -1,8 +1,10 @@
 /* eslint-disable */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Button, Table } from 'react-bootstrap';
 import styled from 'styled-components';
+
+import { stockContext } from './App.js';
 
 import './Spec.scss';
 
@@ -20,6 +22,8 @@ let 뿡뿡 = styled.h4`
 
 function Spec(props) {
     
+    let stock = useContext(stockContext);
+    let stockSet = useContext(stockContext);
     let { id } = useParams();
     let history = useHistory();
     let [alert, alertSet] = useState(true);
@@ -63,7 +67,7 @@ function Spec(props) {
                         <h4 className="pt-5">{finded.title}</h4>
                         <p>{finded.content}</p>
                         <p>{finded.price} 원</p>
-                        <Stock stock={props.stock} stockSet={props.stockSet} id={id}> </Stock>
+                        <Stock stock={stock} stockSet={props.stockSet} id={id}> </Stock>
                         <button className="btn btn-danger" onClick={() => { stockDeduct() }}>주문하기!</button>
                         <Button variant="btn btn-danger" onClick={() => { history.goBack() }}>뒤로가기</Button>
                     </div>
@@ -81,19 +85,20 @@ function Spec(props) {
     }
 
     function stockDeduct() {
-        let tmp = [...props.stock];
+        let tmp = [...stock];
         
         tmp[id] = (tmp[id] - 1);
-        props.stockSet(tmp);
+        stockSet(tmp);
 
         return null;
     }
 }
 
 function Stock(props) {
+    let stockSet = useContext(stockContext);
     return (
         <div>
-            <p>재고 : { props.stock[props.id] }</p>
+            <p>재고 : { stockSet[props.id] }</p>
         </div>
     )
 }
