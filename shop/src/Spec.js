@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Button, Table, Nav, Tab } from 'react-bootstrap';
 import { CSSTransition } from "react-transition-group"
@@ -32,6 +32,8 @@ function Spec(props) {
     let finded = props.shoes.find((item) => { return item.id == id });
     let [tab, setTab] = useState(0);
     let [aniSwitch, setAniSwitch] = useState(false);
+
+    const nodeRef = useRef(null);
 
     useEffect(() => {
         var timer1 = setTimeout(() => { alertSet(false) }, 2000);
@@ -74,23 +76,26 @@ function Spec(props) {
                     </div>
                 </div>
 
-                <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
-                    <Nav.Item>
-                        <Nav.Link eventKey="link-0" onClick={() => { setAniSwitch(false); setTab(0) }}>상세정보</Nav.Link>
-                    </Nav.Item>
+                <div className="container">
 
-                    <Nav.Item>
-                        <Nav.Link eventKey="link-1" onClick={() => { setAniSwitch(false); setTab(1) }}>리뷰</Nav.Link>
-                    </Nav.Item>
+                    <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
+                        <Nav.Item>
+                            <Nav.Link eventKey="link-0" onClick={() => { setAniSwitch(false); setTab(0) }}>상세정보</Nav.Link>
+                        </Nav.Item>
 
-                    <Nav.Item>
-                        <Nav.Link eventKey="link-2" onClick={() => { setAniSwitch(false); setTab(2) }}>판매자</Nav.Link>
-                    </Nav.Item>
-                </Nav>
+                        <Nav.Item>
+                            <Nav.Link eventKey="link-1" onClick={() => { setAniSwitch(false); setTab(1) }}>리뷰</Nav.Link>
+                        </Nav.Item>
 
-                <CSSTransition in={aniSwitch} classNames="wow" timeout={500}>
-                    <TabComponent tab={tab} aniSwitch={aniSwitch} setAniSwitch={setAniSwitch}></TabComponent>
-                </CSSTransition>
+                        <Nav.Item>
+                            <Nav.Link eventKey="link-2" onClick={() => { setAniSwitch(false); setTab(2) }}>판매자</Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+
+                    <CSSTransition nodeRef={nodeRef} in={aniSwitch} classNames="wow" timeout={500}>
+                        <div ref={nodeRef}><TabComponent tab={tab} aniSwitch={aniSwitch} setAniSwitch={setAniSwitch}></TabComponent></div>
+                    </CSSTransition>
+                </div>
 
 
             </div>
@@ -126,9 +131,9 @@ function Stock(props) {
 }
 
 function TabComponent(props) {
-    useEffect(()=>{
+    useEffect(() => {
         props.setAniSwitch(true);
-        
+
     });
 
     if (props.tab === 0) {
