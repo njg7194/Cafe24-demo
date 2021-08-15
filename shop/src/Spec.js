@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { Button, Table } from 'react-bootstrap';
+import { Button, Table, Nav, Tab } from 'react-bootstrap';
 import styled from 'styled-components';
 
 import { stockContext } from './App.js';
@@ -21,28 +21,29 @@ let 뿡뿡 = styled.h4`
 
 
 function Spec(props) {
-    
+
     let stock = useContext(stockContext);
 
     let { id } = useParams();
     let history = useHistory();
     let [alert, alertSet] = useState(true);
     let [inputData, inputData변경] = useState('');
-    let finded = props.shoes.find( (item) => {return item.id == id } );
-    
-        useEffect(() => {
-            var timer1 = setTimeout(() => { alertSet(false) }, 2000);
-    
-            return () => {
-                clearTimeout(timer1);
-            }
-        }, []);
+    let finded = props.shoes.find((item) => { return item.id == id });
+    let [tab, setTab] = useState(0);
+
+    useEffect(() => {
+        var timer1 = setTimeout(() => { alertSet(false) }, 2000);
+
+        return () => {
+            clearTimeout(timer1);
+        }
+    }, []);
 
     return (
         <div>
 
             {inputData}
-            <input onChange={(e) => { inputData변경(e.target.value) }}/>
+            <input onChange={(e) => { inputData변경(e.target.value) }} />
 
             <div className="container">
 
@@ -70,6 +71,24 @@ function Spec(props) {
                         <Button variant="btn btn-danger" onClick={() => { history.goBack() }}>뒤로가기</Button>
                     </div>
                 </div>
+
+                <Nav className = "mt-5" variant="tabs" defaultActiveKey="link-0">
+                    <Nav.Item>
+                        <Nav.Link eventKey="link-0" onClick={()=>{setTab(0)}}>상세정보</Nav.Link>
+                    </Nav.Item>
+
+                    <Nav.Item>
+                        <Nav.Link eventKey="link-1" onClick={()=>{setTab(1)}}>리뷰</Nav.Link>
+                    </Nav.Item>
+
+                    <Nav.Item>
+                        <Nav.Link eventKey="link-2" onClick={()=>{setTab(2)}}>판매자</Nav.Link>
+                    </Nav.Item>
+                </Nav>
+
+                <TabComponent tab={tab}></TabComponent>
+
+
             </div>
         </div>
 
@@ -85,7 +104,7 @@ function Spec(props) {
     function stockDeduct() {
         let tmp = [...stock.stock];
         // console.log(tmp); contextAPI 검증용
-        
+
         tmp[id] = (tmp[id] - 1);
         stock.stockSet(tmp);
 
@@ -97,8 +116,22 @@ function Stock(props) {
     let stock = useContext(stockContext);
     return (
         <div>
-            <p>재고 : { stock.stock[props.id] }</p>
+            <p>재고 : {stock.stock[props.id]}</p>
         </div>
     )
 }
-  export default Spec;
+
+function TabComponent(props) {
+
+
+    if (props.tab === 0) {
+        return <div>0번째 내용</div>
+    } else if (props.tab === 1) {
+        return <div>1번째 내용</div>
+    } else if (props.tab === 2) {
+        return <div>2번째 내용</div>
+    }
+
+
+}
+export default Spec;
