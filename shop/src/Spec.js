@@ -2,10 +2,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Button, Table, Nav, Tab } from 'react-bootstrap';
-import styled from 'styled-components';
+import { CSSTransition } from "react-transition-group"
 
 import { stockContext } from './App.js';
 
+import styled from 'styled-components';
 import './Spec.scss';
 
 let 뿡 = styled.div`
@@ -30,6 +31,7 @@ function Spec(props) {
     let [inputData, inputData변경] = useState('');
     let finded = props.shoes.find((item) => { return item.id == id });
     let [tab, setTab] = useState(0);
+    let [aniSwitch, setAniSwitch] = useState(false);
 
     useEffect(() => {
         var timer1 = setTimeout(() => { alertSet(false) }, 2000);
@@ -72,21 +74,23 @@ function Spec(props) {
                     </div>
                 </div>
 
-                <Nav className = "mt-5" variant="tabs" defaultActiveKey="link-0">
+                <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
                     <Nav.Item>
-                        <Nav.Link eventKey="link-0" onClick={()=>{setTab(0)}}>상세정보</Nav.Link>
+                        <Nav.Link eventKey="link-0" onClick={() => { setAniSwitch(false); setTab(0) }}>상세정보</Nav.Link>
                     </Nav.Item>
 
                     <Nav.Item>
-                        <Nav.Link eventKey="link-1" onClick={()=>{setTab(1)}}>리뷰</Nav.Link>
+                        <Nav.Link eventKey="link-1" onClick={() => { setAniSwitch(false); setTab(1) }}>리뷰</Nav.Link>
                     </Nav.Item>
 
                     <Nav.Item>
-                        <Nav.Link eventKey="link-2" onClick={()=>{setTab(2)}}>판매자</Nav.Link>
+                        <Nav.Link eventKey="link-2" onClick={() => { setAniSwitch(false); setTab(2) }}>판매자</Nav.Link>
                     </Nav.Item>
                 </Nav>
 
-                <TabComponent tab={tab}></TabComponent>
+                <CSSTransition in={aniSwitch} classNames="wow" timeout={500}>
+                    <TabComponent tab={tab} aniSwitch={aniSwitch} setAniSwitch={setAniSwitch}></TabComponent>
+                </CSSTransition>
 
 
             </div>
@@ -122,7 +126,10 @@ function Stock(props) {
 }
 
 function TabComponent(props) {
-
+    useEffect(()=>{
+        props.setAniSwitch(true);
+        
+    });
 
     if (props.tab === 0) {
         return <div>0번째 내용</div>
@@ -131,7 +138,5 @@ function TabComponent(props) {
     } else if (props.tab === 2) {
         return <div>2번째 내용</div>
     }
-
-
 }
 export default Spec;
