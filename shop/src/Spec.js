@@ -23,14 +23,12 @@ let 뿡뿡 = styled.h4`
 function Spec(props) {
     
     let stock = useContext(stockContext);
-    let stockSet = useContext(stockContext);
+
     let { id } = useParams();
     let history = useHistory();
     let [alert, alertSet] = useState(true);
     let [inputData, inputData변경] = useState('');
-    let finded = props.shoes.find((item) => {
-        return item.id == id
-    });
+    let finded = props.shoes.find( (item) => {return item.id == id } );
     
         useEffect(() => {
             var timer1 = setTimeout(() => { alertSet(false) }, 2000);
@@ -67,7 +65,7 @@ function Spec(props) {
                         <h4 className="pt-5">{finded.title}</h4>
                         <p>{finded.content}</p>
                         <p>{finded.price} 원</p>
-                        <Stock stock={stock} stockSet={props.stockSet} id={id}> </Stock>
+                        <Stock id={id}> </Stock>
                         <button className="btn btn-danger" onClick={() => { stockDeduct() }}>주문하기!</button>
                         <Button variant="btn btn-danger" onClick={() => { history.goBack() }}>뒤로가기</Button>
                     </div>
@@ -85,20 +83,21 @@ function Spec(props) {
     }
 
     function stockDeduct() {
-        let tmp = [...stock];
+        let tmp = [...stock.stock];
+        // console.log(tmp); contextAPI 검증용
         
         tmp[id] = (tmp[id] - 1);
-        stockSet(tmp);
+        stock.stockSet(tmp);
 
         return null;
     }
 }
 
 function Stock(props) {
-    let stockSet = useContext(stockContext);
+    let stock = useContext(stockContext);
     return (
         <div>
-            <p>재고 : { stockSet[props.id] }</p>
+            <p>재고 : { stock.stock[props.id] }</p>
         </div>
     )
 }

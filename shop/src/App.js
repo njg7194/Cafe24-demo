@@ -74,7 +74,7 @@ function App() {
         {/* React Route : 스펙 화면 라우팅 */}
         <Route path="/spec/:id">
 
-          <stockContext.Provider value={stock, stockSet}>
+          <stockContext.Provider value={{stock, stockSet}}>
             <Spec shoes={data} />
           </stockContext.Provider>
 
