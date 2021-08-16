@@ -10,25 +10,31 @@ function Cart(props) {
             <Table responsive="sm">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
+                        <th>번호</th>
+                        <th>상품명</th>
+                        <th>수량</th>
+                        <th>이건뭘까</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{props.state[0].id}</td>
-                        <td>{props.state[0].name}</td>
-                        <td>{props.state[0].quan}</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                    </tr>
+                    {
+                        props.state.map((a, i) => {
+                            return (
+                            <tr key={i}>
+                                <td>{ a.id + 1 }</td>
+                                <td>{ a.name }</td>
+                                <td>{ a.quan }</td>
+                                <td><button onClick={()=>{props.dispatch({type : '+', id : i})}}>
+                                    +</button>
+                                    <button onClick={()=>{props.dispatch({type : '-', id : i})}}>
+                                    -</button>
+                                </td>
+                            </tr>    
+                            )
+                        })
+                    }
+
+
                 </tbody>
             </Table>
 
@@ -40,7 +46,7 @@ function storeToProp(state) {
     return {
         state: state
     }
-    
+
 }
 
 export default connect(storeToProp)(Cart)

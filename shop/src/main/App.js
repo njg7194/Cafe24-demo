@@ -30,13 +30,13 @@ function App() {
       {/* React Bootstrap : react-bootstrap 기본 Navbar 수정하여 적용함. */}
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home" >uStock Analysist</Navbar.Brand>
+          <Navbar.Brand href="#/" >uStock Analysist</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#/">Home</Nav.Link>
               <Nav.Link href="#/spec/1">Spec</Nav.Link>
-              <Nav.Link href="#action/Cart">Cart</Nav.Link>
+              <Nav.Link href="#/Cart">Cart</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
@@ -78,8 +78,8 @@ function App() {
         </Route>
 
         {/* Cart 화면 라우팅 */}
-        <Route >
-            <Cart path="action/Cart"></Cart>
+        <Route path="/Cart">
+            <Cart></Cart>
         </Route>
 
 
