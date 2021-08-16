@@ -92,6 +92,8 @@ function Spec(props) {
                         </Nav.Item>
                     </Nav>
 
+                    {/* nodeRef써야warning 안뜸. 리엑트 부트스트렙 에서 CSSTransition 쓰려면 저거 써야한다고함.
+                        라이브러리 만든 사람이 리엑트에서 더이상 지원하지 않는 함수를 써서 그렇다고 함.*/}
                     <CSSTransition nodeRef={nodeRef} in={aniSwitch} classNames="wow" timeout={500}>
                         <div ref={nodeRef}><TabComponent tab={tab} aniSwitch={aniSwitch} setAniSwitch={setAniSwitch}></TabComponent></div>
                     </CSSTransition>

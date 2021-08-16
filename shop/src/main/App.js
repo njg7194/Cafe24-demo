@@ -7,6 +7,7 @@ import axios from 'axios';
 
 import arrayData from './data.js';
 import Spec from './Spec.js';
+import Cart from './Cart.js';
 
 import './App.css';
 
@@ -35,8 +36,8 @@ function App() {
             <Nav className="me-auto">
               <Nav.Link href="#/">Home</Nav.Link>
               <Nav.Link href="#/spec/1">Spec</Nav.Link>
+              <Nav.Link href="#action/Cart">Cart</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                 <NavDropdown.Divider />
@@ -46,7 +47,6 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
 
       {/* React Route : 리엑트 라우트시 단일 컴포넌트 표시를 위한 react-router-dom Switch */}
       <Switch>
@@ -59,11 +59,8 @@ function App() {
               <input></input>
             </div>
 
-
             <Shoelist data={data} ></Shoelist>
-            {/* <Add_dataBTN data={ data } set={ ())=> dataSet() }></Add_dataBTN> */}
             <button className="btn btn-primary" onClick={() => {
-
               axios.get('https://codingapple1.github.io/shop/data2.json')
                 .then((result) => { dataSet([...data, ...result.data]) })
                 .catch(() => { })
@@ -79,6 +76,12 @@ function App() {
           </stockContext.Provider>
 
         </Route>
+
+        {/* Cart 화면 라우팅 */}
+        <Route >
+            <Cart path="action/Cart"></Cart>
+        </Route>
+
 
         {/* React Route : 예외 처리 라우팅 */}
         <Route path="/:id">
