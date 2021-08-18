@@ -2,6 +2,8 @@ import React from 'react';
 import {Table} from 'react-bootstrap';
 import { connect } from 'react-redux';
 
+import './Spec.scss';
+
 function Cart(props) {
 
     return (
@@ -38,13 +40,29 @@ function Cart(props) {
                 </tbody>
             </Table>
 
+            {
+
+                props.modalstat === true
+                    ? (
+                        <div className="my-alert2">
+                            <p>지금 구입하면 20% 세일!</p>
+                            <button onClick={() => { props.dispatch({ type: 'off' }); console.log(props.modalstat) }}>X</button>
+                        </div>
+                    )
+                    : null
+            }
+
+
+
         </div>
     );
 }
 
 function storeToProp(state) {
+    console.log(state.reducer2);
     return {
-        state: state
+        state : state.reducer,
+        modalstat : state.reducer2
     }
 
 }

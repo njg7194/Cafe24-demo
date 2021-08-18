@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 
 let _store = [
   { id: 0, name: 'cool shoes', quan: 2 },
@@ -31,7 +31,21 @@ function reducer(state = _store, action) {
   }
 }
 
-let store = createStore(reducer);
+function reducer2(state = true, action){
+  console.log(action.type);
+  switch (action.type) {
+    case 'on':
+      return true
+
+    case 'off':
+      return false
+
+    default:
+      return true
+  }
+}
+
+let store = createStore(combineReducers({reducer, reducer2}));
 
 //해쉬라우터는 브라우저 라우터에 비해 서버로 데잍를 잘못 요청할 일이 없어짐.
 
