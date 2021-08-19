@@ -19,7 +19,7 @@ function reducer(state = _store, action) {
 
     let tmp = [...state];
     tmp[action.id].quan++;
-    console.log(action.id);
+    //console.log(action.id);
     return tmp
   } else if (action.type === '-'){
     let tmp = [...state];
@@ -33,16 +33,8 @@ function reducer(state = _store, action) {
 
 function reducer2(state = true, action){
   console.log(action.type);
-  switch (action.type) {
-    case 'on':
-      return true
-
-    case 'off':
-      return false
-
-    default:
-      return true
-  }
+  if (action.type === 'off')return false
+  else return state
 }
 
 let store = createStore(combineReducers({reducer, reducer2}));

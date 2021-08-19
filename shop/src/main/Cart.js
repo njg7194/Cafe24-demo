@@ -46,7 +46,7 @@ function Cart(props) {
                     ? (
                         <div className="my-alert2">
                             <p>지금 구입하면 20% 세일!</p>
-                            <button onClick={() => { props.dispatch({ type: 'off' }); console.log(props.modalstat) }}>X</button>
+                            <button onClick={() => { props.dispatch({ type: 'off', curStat: props.modalstat}); console.log(props.modalstat) }}>X</button>
                         </div>
                     )
                     : null
