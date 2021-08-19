@@ -59,7 +59,7 @@ function Cart(props) {
 }
 
 function storeToProp(state) {
-    console.log(state.reducer2);
+    //console.log(state.reducer2);
     return {
         state : state.reducer,
         modalstat : state.reducer2

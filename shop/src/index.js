@@ -11,12 +11,13 @@ import { combineReducers, createStore } from 'redux';
 
 let _store = [
   { id: 0, name: 'cool shoes', quan: 2 },
-  { id: 1, name: 'bad ass', quan: 345 }
+  { id: 1, name: 'bad ass', quan: 345 },
+  { id: 2, name: 'Whit and Black', quan: 345 }
 ];
 
 function reducer(state = _store, action) {
-  if (action.type === '+') {
 
+  if (action.type === '+') {
     let tmp = [...state];
     tmp[action.id].quan++;
     //console.log(action.id);
@@ -26,13 +27,25 @@ function reducer(state = _store, action) {
     tmp[action.id].quan--;
     console.log(action.id);
     return tmp
+  } else if (action.type === '++') {
+    let tmp = [...state];
+    //tmp.push(action.payload); 일단 ㄱㄷ 체크하고 넣어야될거 아님
+
+    //현제 데이터에 받아온 데이터와 동일한 값 유무 판단.
+    //let found = tmp.map(i=>i.name).indexOf(action.payload.name);  안됨
+    let found = tmp.findIndex(i => i.name === action.payload.name);
+    console.log(found);
+
+
+    return tmp
   } else {
     return state
   }
+
 }
 
 function reducer2(state = true, action){
-  console.log(action.type);
+  //console.log(action.type);
   if (action.type === 'off')return false
   else return state
 }

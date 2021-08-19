@@ -4,10 +4,13 @@ import { useHistory, useParams } from 'react-router-dom';
 import { Button, Table, Nav, Tab } from 'react-bootstrap';
 import { CSSTransition } from "react-transition-group"
 
+
+
 import { stockContext } from './App.js';
 
 import styled from 'styled-components';
 import './Spec.scss';
+import { connect } from 'react-redux';
 
 let 뿡 = styled.div`
     padding : 20px;
@@ -29,9 +32,11 @@ function Spec(props) {
     let history = useHistory();
     let [alert, alertSet] = useState(true);
     let [inputData, inputData변경] = useState('');
-    let finded = props.shoes.find((item) => { return item.id == id });
+    let finded = props.shoes.find((item) => { return (item.id + 1) == id }); //데이터셋에서 현제 페이지 id에 따른 아이템 출력
     let [tab, setTab] = useState(0);
     let [aniSwitch, setAniSwitch] = useState(false);
+
+    
 
     const nodeRef = useRef(null);
 
@@ -71,20 +76,33 @@ function Spec(props) {
                         <p>{finded.content}</p>
                         <p>{finded.price} 원</p>
                         <Stock id={id}> </Stock>
-                        <button className="btn btn-danger" onClick={() => { stockDeduct() }}>주문하기!</button>
-                        <Button variant="btn btn-danger" onClick={() => { history.goBack() }}>뒤로가기</Button>
-                    </div>
+                        <button
+                            className="btn btn-danger"
+                            onClick={() => {
+                                stockDeduct();
+                                props.dispatch({
+                                    type: '++',
+                                    payload: {
+                                        id: finded.id + 1,
+                                        name: finded.title,
+                                        quan: (Math.floor(Math.random() * 299) + 1)}
+                                    });
+                                history.push('/cart');
+                                }}
+                        >주문하기!</button>
+                    <Button variant="btn btn-danger" onClick={() => { history.goBack() }}>뒤로가기</Button>
                 </div>
+            </div>
 
-                <div className="container">
+            <div className="container">
 
-                    <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
-                        <Nav.Item>
-                            <Nav.Link eventKey="link-0" onClick={() => { setAniSwitch(false); setTab(0) }}>상세정보</Nav.Link>
-                        </Nav.Item>
+                <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
+                    <Nav.Item>
+                        <Nav.Link eventKey="link-0" onClick={() => { setAniSwitch(false); setTab(0) }}>상세정보</Nav.Link>
+                    </Nav.Item>
 
-                        <Nav.Item>
-                            <Nav.Link eventKey="link-1" onClick={() => { setAniSwitch(false); setTab(1) }}>리뷰</Nav.Link>
+                    <Nav.Item>
+                        <Nav.Link eventKey="link-1" onClick={() => { setAniSwitch(false); setTab(1) }}>리뷰</Nav.Link>
                         </Nav.Item>
 
                         <Nav.Item>
@@ -146,4 +164,15 @@ function TabComponent(props) {
         return <div>2번째 내용</div>
     }
 }
-export default Spec;
+
+
+function storeToProp(state) {
+    //console.log(state.reducer2);
+    return {
+        state : state.reducer,
+        modalstat : state.reducer2
+    }
+
+}
+
+export default connect(storeToProp)(Spec);
