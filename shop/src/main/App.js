@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import React, { useState, props, useEffect } from 'react';
-import { link, Route, Switch } from 'react-router-dom';
+import { link, Route, Switch, useHistory } from 'react-router-dom';
 import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, Container } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -99,6 +99,7 @@ function Shoelist(props) {
 
   // React Props : 프롭스 받아와서 리컴포넌트
   let tmp = [...props.data];
+  let history = useHistory();
 
   return (
     <>
@@ -110,7 +111,7 @@ function Shoelist(props) {
               let shoe = i + 1;
               /*내 자신과의 싸움에서 지지는 않고 녹다운정도 된듯*/
               return (
-                <div key={i} className="col-md-4">
+                <div key={i} className="col-md-4" onClick={()=>{history.push('/spec/' + shoe)}}>
                   <img src={'https://codingapple1.github.io/shop/shoes' + shoe + '.jpg'} width="100%" />
                   <h4>{x.title}</h4>
                   <p>{x.content}</p>

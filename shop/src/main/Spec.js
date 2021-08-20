@@ -36,7 +36,7 @@ function Spec(props) {
     let [tab, setTab] = useState(0);
     let [aniSwitch, setAniSwitch] = useState(false);
 
-    
+    console.log(finded);
 
     const nodeRef = useRef(null);
 
@@ -145,7 +145,7 @@ function Stock(props) {
     let stock = useContext(stockContext);
     return (
         <div>
-            <p>재고 : {stock.stock[props.id]}</p>
+            <p>재고 : {stock.stock[props.id - 1]}</p>
         </div>
     )
 }
