@@ -31,7 +31,6 @@ function reducer(state = _store, action) {
     let tmp = [...state];
     
     //현제 데이터에 받아온 데이터와 동일한 값 유무 판단.
-    //let found = tmp.map(i=>i.name).indexOf(action.payload.name);  안됨
     let found = tmp.findIndex(i => i.name === action.payload.name);
     if (found < 0) {// if None
       tmp.push(action.payload); 

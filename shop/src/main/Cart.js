@@ -1,10 +1,14 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 
 import './Spec.scss';
 
 function Cart(props) {
+    let setStock = useSelector((state)=>state.reducer);
+    let alertStat = useSelector((state)=>state.reducer2);
+
+    let dispatch = useDispatch();
 
     return (
         <div>
@@ -20,15 +24,15 @@ function Cart(props) {
                 </thead>
                 <tbody>
                     {
-                        props.state.map((a, i) => {
+                        setStock.map((a, i) => {
                             return (
                             <tr key={i}>
                                 <td>{ a.id + 1 }</td>
                                 <td>{ a.name }</td>
                                 <td>{ a.quan }</td>
-                                <td><button onClick={()=>{props.dispatch({type : '+', id : i})}}>
+                                <td><button onClick={()=>{dispatch({type : '+', id : i})}}>
                                     +</button>
-                                    <button onClick={()=>{props.dispatch({type : '-', id : i})}}>
+                                    <button onClick={()=>{dispatch({type : '-', id : i})}}>
                                     -</button>
                                 </td>
                             </tr>    
@@ -42,11 +46,11 @@ function Cart(props) {
 
             {
 
-                props.modalstat === true
+                alertStat === true
                     ? (
                         <div className="my-alert2">
                             <p>지금 구입하면 20% 세일!</p>
-                            <button onClick={() => { props.dispatch({ type: 'off', curStat: props.modalstat}); console.log(props.modalstat) }}>X</button>
+                            <button onClick={() => { dispatch({ type: 'off', curStat: alertStat.modalstat}); console.log(alertStat.modalstat) }}>X</button>
                         </div>
                     )
                     : null
@@ -58,15 +62,15 @@ function Cart(props) {
     );
 }
 
-function storeToProp(state) {
-    //console.log(state.reducer2);
-    return {
-        state : state.reducer,
-        modalstat : state.reducer2
-    }
+// function storeToProp(state) {
+//     //console.log(state.reducer2);
+//     return {
+//         state : state.reducer,
+//         modalstat : state.reducer2
+//     }
 
-}
+// }
 
-export default connect(storeToProp)(Cart)
+export default Cart
 
 // export default Cart;
