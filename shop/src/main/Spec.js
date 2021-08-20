@@ -36,8 +36,6 @@ function Spec(props) {
     let [tab, setTab] = useState(0);
     let [aniSwitch, setAniSwitch] = useState(false);
 
-    console.log(finded);
-
     const nodeRef = useRef(null);
 
     useEffect(() => {
