@@ -2,15 +2,13 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Button, Table, Nav, Tab } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import { CSSTransition } from "react-transition-group"
-
-
 
 import { stockContext } from './App.js';
 
 import styled from 'styled-components';
 import './Spec.scss';
-import { connect } from 'react-redux';
 
 let 뿡 = styled.div`
     padding : 20px;

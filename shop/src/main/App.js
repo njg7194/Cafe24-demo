@@ -1,15 +1,18 @@
 /* eslint-disable */
 
-import React, { useState, props, useEffect } from 'react';
+import React, { useState, props, useEffect, lazy } from 'react';
 import { link, Route, Switch, useHistory } from 'react-router-dom';
 import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem, Container } from 'react-bootstrap';
 import axios from 'axios';
 
 import arrayData from './data.js';
-import Spec from './Spec.js';
+let Spec = lazy(()=>{ return import('./Spec.js')}); //성능잡기 lazy로딩
+// import Spec from './Spec.js';
+
 import Cart from './Cart.js';
 
 import './App.css';
+import { Suspense } from 'react';
 
 //Context API : 같은 변수값을 공유할 범위 생성   
 export let stockContext = React.createContext({});   
@@ -71,8 +74,10 @@ function App() {
         {/* React Route : 스펙 화면 라우팅 */}
         <Route path="/spec/:id">
 
-          <stockContext.Provider value={{stock, stockSet}}>
-            <Spec shoes={data} />
+          <stockContext.Provider value={{ stock, stockSet }}>
+            <Suspense fallback={<div>로딩중이에요</div>}>
+              <Spec shoes={data} />
+            </Suspense>
           </stockContext.Provider>
 
         </Route>
