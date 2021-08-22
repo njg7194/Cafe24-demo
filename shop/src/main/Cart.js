@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useEffect } from 'react';
 import {Table} from 'react-bootstrap';
 import { connect, useDispatch, useSelector } from 'react-redux';
 
@@ -45,7 +45,6 @@ function Cart(props) {
             </Table>
 
             {
-
                 alertStat === true
                     ? (
                         <div className="my-alert2">
@@ -56,11 +55,30 @@ function Cart(props) {
                     : null
             }
 
-
-
+            <Parent name="jon" age="20"></Parent>
         </div>
     );
 }
+
+
+function Parent(props) {
+    return (
+        <div>
+            <Test0 name = {props.name}></Test0>
+            <Test1 age = {props.age}></Test1>
+        </div>
+    )
+}
+
+function Test0(props) {
+    useEffect(()=>{console.log('render1' + props.name)});
+    return<div>1111</div>
+}
+
+let Test1 = memo(function(props){
+    useEffect(()=>{ console.log('render2' + props.age)});
+    return <div>2222</div>
+});
 
 // function storeToProp(state) {
 //     //console.log(state.reducer2);
