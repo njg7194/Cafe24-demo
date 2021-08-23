@@ -1,14 +1,16 @@
-import React, { memo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {Table} from 'react-bootstrap';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './Spec.scss';
 
 function Cart(props) {
     let setStock = useSelector((state)=>state.reducer);
     let alertStat = useSelector((state)=>state.reducer2);
-
+    
     let dispatch = useDispatch();
+    
+
 
     return (
         <div>
@@ -58,27 +60,50 @@ function Cart(props) {
             <Parent name="jon" age="20"></Parent>
         </div>
     );
-}
 
+}
 
 function Parent(props) {
+    useEffect(() => {
+        console.log(1111);
+    }, [test1])
+
+    useEffect(() => {
+        console.log(2222);
+    }, [test2])
+
+
+    const [name, setName] = useState(props.name);
+    const [age, setAge] = useState(props.age);
+    
+    const Test1 = useMemo(() => test1, [name]);
+    const Test2 = useMemo(() => test2, [age])
+
+    function test1() {
+
+        return (
+            <div>props.name : {name}</div>
+        )
+    }
+    
+    function test2() {
+
+        return (
+            <div>props.age : {age}</div>
+        )
+    }
+
     return (
         <div>
-            <Test0 name = {props.name}></Test0>
-            <Test1 age = {props.age}></Test1>
+            <Test1 name={props.name}></Test1>
+            <Test2 age={props.age}></Test2>
         </div>
-    )
+    );
 }
 
-function Test0(props) {
-    useEffect(()=>{console.log('render1' + props.name)});
-    return<div>1111</div>
-}
 
-let Test1 = memo(function(props){
-    useEffect(()=>{ console.log('render2' + props.age)});
-    return <div>2222</div>
-});
+
+
 
 // function storeToProp(state) {
 //     //console.log(state.reducer2);
@@ -90,5 +115,3 @@ let Test1 = memo(function(props){
 // }
 
 export default Cart
-
-// export default Cart;
