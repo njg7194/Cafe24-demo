@@ -2,13 +2,17 @@
 import './App.css';
 
 import Demo from './demo/demo'
-import Demo2 from './demo/demo2'
+import MotionEx from './demo/reactMotionEX'
 
 function App() {
+
+  const title="HEllow"
   return (
     <div className="App">
       {/* <Demo></Demo> */}
-      <Demo2></Demo2>
+      <MotionEx myKey={title} delay={300} from={"left"}>
+        <h1>{title}</h1>
+      </MotionEx>
     </div>
   );
 }
