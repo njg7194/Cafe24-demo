@@ -9,7 +9,7 @@ function RTG() {
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
   return (
-    <Container style={{ paddingTop: '2rem' }}>
+    <Container style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
       {showButton && (
         <Button
           onClick={() => setShowMessage(true)}
