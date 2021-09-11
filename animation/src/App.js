@@ -10,7 +10,7 @@ import "./App.css";
 function App() {
   const [inProp, setProp] = useState(false);
 
-  const title = "HEllow";
+  const title = "react-motion";
   return (
     <div className="App">
       <SpringEx></SpringEx>
@@ -20,14 +20,18 @@ function App() {
       </MotionEx>
 
       <RTG />
-      <Transition in={inProp} timeout={500}>
-        {(state) => <div className={`fade fade-${state}`} />}
-      </Transition>
+
+
       <CSSTransition in={inProp} timeout={1000} classNames="my-node">
         <div>
-          <h1>HELLLLLOOOOWWWW</h1>
+          <h1>CSSTransition</h1>
         </div>
       </CSSTransition>
+
+      {/* <Transition in={inProp} timeout={500}>
+        {(state) => <div className={`fade fade-${state}`} />}
+      </Transition> */}
+
       <Button variant="primary" onClick={() => setProp(!inProp)}>
         Click to Enter
       </Button>

@@ -32,7 +32,7 @@ function RTG() {
           dismissible
         >
           <Alert.Heading>
-            Animated alert message
+            react-transition-group
           </Alert.Heading>
           <p>
             This alert message is being transitioned in and
