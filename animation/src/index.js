@@ -4,9 +4,26 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { Provider } from 'react-redux'; // Provider : 값을 공유하길 원하는 컴포넌트를 감싸주는 용도.
+import { combineReducers, createStore} from 'redux';
+
+function reducer(state, action) {
+  if (action.type === 'set') {
+    return "Var Setted";
+  } else if (action.type === 'reset') {
+    return "Var Resetted";
+  } else {
+    return "none";
+  }
+}
+
+let store = createStore(combineReducers({ reducer }));
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store} >
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

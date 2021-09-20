@@ -5,10 +5,13 @@ import { useState } from "react";
 import { CSSTransition, Transition } from "react-transition-group";
 import { Button } from "react-bootstrap";
 
+import {connect, useDispatch} from "react-redux";
+
 import "./App.css";
 
-function App() {
+function App(props) {
   const [inProp, setProp] = useState(false);
+  const dispatch = useDispatch();
 
   const title = "react-motion";
   return (
@@ -24,19 +27,32 @@ function App() {
 
       <CSSTransition in={inProp} timeout={1000} classNames="my-node">
         <div>
-          <h1>CSSTransition</h1>
+          <h1>{props.state}</h1>
         </div>
       </CSSTransition>
 
-      {/* <Transition in={inProp} timeout={500}>
-        {(state) => <div className={`fade fade-${state}`} />}
-      </Transition> */}
-
-      <Button variant="primary" onClick={() => setProp(!inProp)}>
-        Click to Enter
+      <Button variant="primary" onClick={() => {
+        setProp(!inProp);
+        if (inProp) {
+          dispatch({type:'set'});
+        } else {
+          dispatch({type:'reset'});
+        }
+        }}>
+        Clicked "{props.state}"
       </Button>
     </div>
   );
 }
 
-export default App;
+
+//index.js에서 만든 redux store에서 데이터를 가져와서 props로 변환해주는 함수.
+//여기서 인자로 받는 "state가 "store" 라고 생각하면 됨."
+function storeToProp(state) {
+  
+  return {
+    state : state.reducer
+  }
+}
+
+export default connect(storeToProp)(App);
