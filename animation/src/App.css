@@ -1,8 +1,13 @@
 .App {
 }
 
+.my-node {
+  color:red;
+}
+
 .my-node-enter {
   opacity: 0;
+  color: red;
 }
 .my-node-enter-active {
   opacity: 1;

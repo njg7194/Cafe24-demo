@@ -24,10 +24,12 @@ function App(props) {
 
       <RTG />
 
-
+      {/* CSSTransition에서 in프롭은 '변환된'값의 상태에 따라 in 또는 out 트렌지션 클래스를 실행함.
+      ex) true -> false 시 out실행. / false -> true 시 in 실행. */}
       <CSSTransition in={inProp} timeout={1000} classNames="my-node">
         <div>
           <h1>{props.state}</h1>
+          hellow
         </div>
       </CSSTransition>
 
