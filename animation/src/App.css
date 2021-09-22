@@ -5,9 +5,17 @@
   color:red;
 }
 
-.my-node-enter {
+.my-node-appear-enter {
   opacity: 0;
   color: red;
+}
+
+.my-node-appear-done {
+  opacity: 1;
+}
+
+.my-node-enter {
+  opacity: 0;
 }
 .my-node-enter-active {
   opacity: 1;
